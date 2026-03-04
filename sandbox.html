@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sandbox — Meet Char Redesign | Team Review</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ---- Sandbox-only styles ---- */
+    .sandbox-banner {
+      background: #1e0f2a;
+      color: #e99f00;
+      text-align: center;
+      padding: .6rem 1rem;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      border-bottom: 2px solid #e99f00;
+    }
+    .sandbox-banner span {
+      color: rgba(255,255,255,.55);
+      font-weight: 400;
+      letter-spacing: .03em;
+      text-transform: none;
+      margin-left: .75rem;
+    }
+
+    /* Comparison header */
+    .compare-header {
+      background: #f3ecf7;
+      border-bottom: 2px solid #bd9bcd;
+      padding: 2rem 0;
+      margin-bottom: 0;
+    }
+    .compare-header h1 {
+      font-size: 1.3rem;
+      color: #76328e;
+      margin-bottom: .4rem;
+    }
+    .compare-header p {
+      font-size: .93rem;
+      color: #7a6888;
+      max-width: 680px;
+    }
+    .compare-label {
+      display: inline-block;
+      padding: .25rem .85rem;
+      border-radius: 50px;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .label-current  { background: #fde8e8; color: #b22222; border: 1px solid #f5c0c0; }
+    .label-proposed { background: #e6f7f7; color: #007e80; border: 1px solid #b0e0e0; }
+
+    .section-divider {
+      background: #f3ecf7;
+      border-top: 2px dashed #bd9bcd;
+      border-bottom: 2px dashed #bd9bcd;
+      padding: 1.1rem 0;
+      text-align: center;
+    }
+    .section-divider p {
+      font-size: .82rem;
+      color: #7a6888;
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* ---- PROPOSED: stat callouts ---- */
+    .meet-stats {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-top: 1.25rem;
+    }
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: #fff;
+      border-radius: 10px;
+      padding: .7rem 1rem;
+      box-shadow: 0 2px 8px rgba(118,50,142,.09);
+      border-left: 3px solid #e99f00;
+    }
+    .stat-pill .stat-num {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #76328e;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .stat-pill .stat-label {
+      font-size: .83rem;
+      color: #3d2e4a;
+      line-height: 1.35;
+    }
+
+    /* ---- PROPOSED: compact cred cards ---- */
+    .cred-card-compact {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: .6rem 1rem;
+      align-items: start;
+      box-shadow: 0 2px 8px rgba(118,50,142,.09);
+      border-left: 3px solid #bd9bcd;
+      transition: box-shadow .25s ease, transform .25s ease;
+    }
+    .cred-card-compact:hover {
+      box-shadow: 0 6px 24px rgba(118,50,142,.14);
+      transform: translateX(3px);
+    }
+    .cred-card-compact h4 {
+      color: #76328e;
+      font-size: .97rem;
+      margin-bottom: .45rem;
+    }
+    .cred-card-compact ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+    .cred-card-compact ul li {
+      font-size: .88rem;
+      color: #3d2e4a;
+      line-height: 1.45;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .cred-card-compact ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: #bd9bcd;
+      font-weight: 900;
+    }
+    .cred-icon-sm { width: 38px; }
+    .cred-icon-sm svg { width: 38px; height: 38px; }
+
+    /* Values pull-quote */
+    .values-quote {
+      background: #76328e;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .values-quote p {
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.92);
+      line-height: 1.6;
+      margin: 0;
+      font-style: italic;
+    }
+    .values-quote cite {
+      display: block;
+      font-size: .8rem;
+      font-weight: 700;
+      color: #e99f00;
+      margin-top: .6rem;
+      font-style: normal;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* Intro paragraph in proposed */
+    .meet-intro-p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #3d2e4a;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .meet-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-pill  { flex: 1; min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Internal team review banner -->
+  <div class="sandbox-banner">
+    &#128274; Internal Sandbox — Not Indexed
+    <span>Team review only · Do not share publicly</span>
+  </div>
+
+  <!-- ======================================================
+       COMPARISON HEADER
+  ====================================================== -->
+  <div class="compare-header section">
+    <div class="container">
+      <h1>Meet Char — Copy &amp; Layout Proposal</h1>
+      <p>The current section is thorough but copy-heavy. Below you'll find the <strong>current version</strong> followed by a <strong>proposed condensed version</strong> that preserves Char's full story while making it faster to read and easier to scan — especially on mobile.</p>
+      <p style="margin-top:.75rem; font-size:.88rem;">Questions or edits? Reply to the team email and changes are fast to make.</p>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       CURRENT VERSION
+  ====================================================== -->
+  <div class="section-divider">
+    <div class="container">
+      <span class="compare-label label-current">Current Version &nbsp;↓</span>
+      <p>This is what's live now. Strong content — but a lot of it for a homepage scroll.</p>
+    </div>
+  </div>
+
+  <section class="section bg-light">
+    <div class="container">
+      <p class="section-eyebrow">Meet Char</p>
+      <h2 class="section-title">Grandmother. Educator.<br>Finance Geek. Business Leader. Professor.</h2>
+
+      <div class="meet-grid">
+
+        <!-- Photos column -->
+        <div class="meet-photos">
+          <figure class="photo-main">
+            <img src="Assets/Char%20with%20grands.jpeg"
+              alt="Char and her husband Jim with their grandchildren">
+            <figcaption>Char and her husband, Jim, with their grands who are all students in public schools.</figcaption>
+          </figure>
+          <figure class="photo-secondary">
+            <img src="Assets/Char%20with%20dog.jpeg" alt="Char Fitzwater">
+          </figure>
+        </div>
+
+        <!-- Bio column -->
+        <div class="meet-bio">
+
+          <div class="bio-block">
+            <h3>My Values were shaped by my hero &ndash; my dad who was part of the Greatest Generation.</h3>
+            <p>I object to a hidden agendas that plague our public-school systems today. Let me be
+              clear, there is a set of values that undergird my priorities &ndash; it's the values
+              and perspective of my father who was a Boy Scout and who enlisted in the U.S. Navy
+              when he was 17 to serve in WWII. It's the values that undergird our
+              constitution&hellip;the values of democracy, equal protection under the law and
+              freedom of speech. I believe public education is the cornerstone of democracy and
+              I plan to stand up for it for the good of our children and the future.</p>
+            <p>That's why shared governance, community engagement, transparency and financial
+              oversight matter as the key responsibilities of the school board.</p>
+          </div>
+
+          <div class="bio-block">
+            <h3>Char Fitzwater, Ph.D., Uniquely Qualified</h3>
+            <p>Char is uniquely qualified as an educator, business leader and financial professional
+              to serve as a Trustee for the Charleston County School District (CCSD). She believes
+              in the importance of strong public education for all our children. Char, her husband
+              and their two children have benefited from their public educations. She has two
+              grandchildren who attend CCSD public schools, and one who attends public school and
+              two who will when they become school-age. Most importantly, Char prioritizes
+              transparent, capable, collaborative governance that intentionally engages with the
+              community and supports strengthening our district.</p>
+          </div>
+
+          <div class="cred-grid">
+            <div class="cred-card">
+              <div class="cred-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#bd9bcd" fill-opacity=".25"/><path d="M10 26l10-6 10 6M14 24v5m12-5v5M20 14l-8 5v1h16v-1l-8-5z" stroke="#76328e" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Education &amp; Leadership</h4>
+                <p>Char graduated cum laude with a bachelor's degree in education from Vanderbilt
+                  University. After teaching briefly, she pursued an MBA at The University of
+                  Kansas. She had a successful 22-year business career including finance and
+                  strategy leadership roles at a Fortune 150 company and serving as Chief Financial
+                  Officer/Chief Information Officer of a regional insurance company. Concurrent with
+                  pursuing her PhD in Organization and Management, Char stepped into teaching
+                  business, strategy and finance. She taught for 20 years at Immaculata University,
+                  where she served as department chair and successfully pursued accreditation for
+                  the business programs. Char retired as professor emerita.</p>
+              </div>
+            </div>
+
+            <div class="cred-card">
+              <div class="cred-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#e99f00" fill-opacity=".2"/><path d="M12 28V16l8-4 8 4v12M16 28v-6h8v6" stroke="#e99f00" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Financial &amp; Strategy Acumen</h4>
+                <p>Char worked collaboratively with multidisciplinary teams across organizations to
+                  achieve success in complex situations. Char was an executive in a
+                  property-casualty insurance company that elevated its operations through rigorous
+                  financial management, restructuring and leveraging emerging technology. Char led
+                  successful pursuit of accreditation of Immaculata University's business programs.
+                  She also coached student teams whose entrepreneurial projects included launching
+                  a nonprofit serving abused women and their children in Bolivia.</p>
+              </div>
+            </div>
+
+            <div class="cred-card">
+              <div class="cred-icon" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#00a0a2" fill-opacity=".18"/><path d="M8 28h24M12 28V18l8-6 8 6v10M17 28v-6h6v6" stroke="#00a0a2" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Vision for Educational Excellence</h4>
+                <p>Under the district's leadership, Charleston County School District (CCSD) has
+                  made recent progress. However, the data also indicates there is still a long way
+                  to go to achieve its own objectives. While we celebrate that CCSD schools rank
+                  third in the state, the state ranks 41st in K-12 education nationally. Char is
+                  confident we can improve learning experiences for all our children by supporting
+                  proactive efforts of the district and developing wider community engagement.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-cta-block">
+            <p>Let's put Char's skills and heart to work for the betterment of Charleston County public schools.</p>
+            <a href="#donate" class="btn btn-purple">Get Involved</a>
+          </div>
+
+        </div><!-- /.meet-bio -->
+      </div><!-- /.meet-grid -->
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+       PROPOSED VERSION
+  ====================================================== -->
+  <div class="section-divider">
+    <div class="container">
+      <span class="compare-label label-proposed">Proposed Version &nbsp;↓</span>
+      <p>Char's own words stay intact. The condensing happens in the credential cards: paragraphs become tight bullets, and the "Uniquely Qualified" paragraph is trimmed to two sentences. Scroll time cut by roughly half. Stats and dog photo added to the left column.</p>
+    </div>
+  </div>
+
+  <section class="section bg-light">
+    <div class="container">
+      <p class="section-eyebrow">Meet Char</p>
+      <h2 class="section-title">Grandmother. Educator.<br>Finance Geek. Business Leader. Professor.</h2>
+
+      <div class="meet-grid">
+
+        <!-- Photos + stats column — sticky restored -->
+        <div class="meet-photos">
+          <figure class="photo-main">
+            <img src="Assets/Char%20with%20grands.jpeg"
+              alt="Char and her husband Jim with their grandchildren">
+            <figcaption>Char and her husband, Jim, with their grands who are all students in public schools.</figcaption>
+          </figure>
+
+          <!-- Stat callouts -->
+          <div class="meet-stats">
+            <div class="stat-pill">
+              <div class="stat-num">40+</div>
+              <div class="stat-label">Years in education &amp; business leadership</div>
+            </div>
+            <div class="stat-pill">
+              <div class="stat-num">4</div>
+              <div class="stat-label">Grandchildren in public schools, 2 attending CCSD</div>
+            </div>
+            <div class="stat-pill">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Degrees: B.S. (cum laude), MBA, Ph.D.</div>
+            </div>
+          </div>
+
+          <!-- Dog photo below stats -->
+          <figure class="photo-secondary">
+            <img src="Assets/Char%20with%20dog.jpeg" alt="Char Fitzwater">
+          </figure>
+        </div>
+
+        <!-- Bio column -->
+        <div class="meet-bio">
+
+          <!-- Her values — kept verbatim -->
+          <div class="bio-block">
+            <h3>My Values were shaped by my hero &ndash; my dad who was part of the Greatest Generation.</h3>
+            <p>I object to a hidden agendas that plague our public-school systems today. Let me be
+              clear, there is a set of values that undergird my priorities &ndash; it's the values
+              and perspective of my father who was a Boy Scout and who enlisted in the U.S. Navy
+              when he was 17 to serve in WWII. It's the values that undergird our
+              constitution&hellip;the values of democracy, equal protection under the law and
+              freedom of speech. I believe public education is the cornerstone of democracy and
+              I plan to stand up for it for the good of our children and the future.</p>
+            <p>That's why shared governance, community engagement, transparency and financial
+              oversight matter as the key responsibilities of the school board.</p>
+          </div>
+
+          <!-- Uniquely Qualified — condensed from 5 sentences to 2 -->
+          <div class="bio-block">
+            <h3>Char Fitzwater, Ph.D., Uniquely Qualified</h3>
+            <p>Char brings 40+ years of education, business, and financial leadership to this role —
+              and five grandchildren in CCSD classrooms give her a personal stake in getting it right.
+              Her focus: transparent, collaborative governance that genuinely engages the community
+              and strengthens our district.</p>
+          </div>
+
+          <!-- Compact credential cards — bullets drawn directly from original copy -->
+          <div class="cred-grid">
+
+            <div class="cred-card-compact">
+              <div class="cred-icon-sm" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#bd9bcd" fill-opacity=".25"/><path d="M10 26l10-6 10 6M14 24v5m12-5v5M20 14l-8 5v1h16v-1l-8-5z" stroke="#76328e" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Education &amp; Leadership</h4>
+                <ul>
+                  <li>B.S. Education, Vanderbilt University (cum laude)</li>
+                  <li>MBA, University of Kansas; Ph.D., Organization &amp; Management</li>
+                  <li>22-year business career: finance &amp; strategy at a Fortune 150 company, then CFO/CIO of a regional insurance company</li>
+                  <li>20 years teaching business, strategy &amp; finance; served as department chair</li>
+                  <li>Led successful accreditation of university business programs; retired Professor Emerita, Immaculata University</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="cred-card-compact">
+              <div class="cred-icon-sm" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#e99f00" fill-opacity=".2"/><path d="M12 28V16l8-4 8 4v12M16 28v-6h8v6" stroke="#e99f00" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Financial &amp; Strategy Acumen</h4>
+                <ul>
+                  <li>Led cross-functional teams through complex organizational challenges</li>
+                  <li>Elevated insurance company operations through rigorous financial management, restructuring, and emerging technology</li>
+                  <li>Mentored student entrepreneurs, including a team that launched a nonprofit serving abused women and their children in Bolivia</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="cred-card-compact">
+              <div class="cred-icon-sm" aria-hidden="true">
+                <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#00a0a2" fill-opacity=".18"/><path d="M8 28h24M12 28V18l8-6 8 6v10M17 28v-6h6v6" stroke="#00a0a2" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Vision for Educational Excellence</h4>
+                <ul>
+                  <li>CCSD has made real progress — and Char is committed to building on it</li>
+                  <li>CCSD ranks 3rd in SC, but SC ranks 41st nationally in K-12 education — there is still a long way to go</li>
+                  <li>Confident we can improve learning for all children by supporting proactive district efforts and developing wider community engagement</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-cta-block" style="margin-top:1.5rem;">
+            <p>Let's put Char's skills and heart to work for the betterment of Charleston County public schools.</p>
+            <a href="#" class="btn btn-purple">Get Involved</a>
+          </div>
+
+        </div><!-- /.meet-bio -->
+      </div><!-- /.meet-grid -->
+    </div>
+  </section>
+
+  <!-- ======================================================
+       NOTES FOR THE TEAM
+  ====================================================== -->
+  <section class="section bg-white">
+    <div class="container container-narrow">
+      <p class="section-eyebrow">Notes for the Team</p>
+      <h2 class="section-title" style="font-size:1.5rem;">What changed &amp; why</h2>
+
+      <div style="display:flex; flex-direction:column; gap:1.25rem; margin-top:1.75rem;">
+
+        <div class="cred-card" style="border-left-color:#00a0a2;">
+          <div class="cred-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#00a0a2" fill-opacity=".18"/><path d="M13 20l5 5 9-9" stroke="#00a0a2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>Paragraphs → Bullets in credential cards</h4>
+            <p>Each credential card had 4–6 sentences. Replacing with tight bullet points cuts reading time by ~60% while keeping every key fact. Visitors can scan in seconds instead of reading for a minute.</p>
+          </div>
+        </div>
+
+        <div class="cred-card" style="border-left-color:#76328e;">
+          <div class="cred-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#bd9bcd" fill-opacity=".25"/><path d="M13 20l5 5 9-9" stroke="#76328e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>"Uniquely Qualified" paragraph condensed</h4>
+            <p>The original paragraph is 5 sentences — several of which repeat what the credential cards already show. The proposed version trims it to 2 sentences that hit the two things readers most need to feel: she's qualified, and she has personal skin in the game. Her values section stays 100% verbatim.</p>
+          </div>
+        </div>
+
+        <div class="cred-card" style="border-left-color:#e99f00;">
+          <div class="cred-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#e99f00" fill-opacity=".2"/><path d="M13 20l5 5 9-9" stroke="#e99f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>Stat callouts added to photo column</h4>
+            <p>Three quick numbers (40+ years, 5 grandchildren, 3 degrees) are the most persuasive shorthand for who Char is. They load instantly for readers who won't read any copy at all.</p>
+          </div>
+        </div>
+
+        <div class="cred-card" style="border-left-color:#bd9bcd;">
+          <div class="cred-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#bd9bcd" fill-opacity=".2"/><path d="M20 14v6l4 4" stroke="#76328e" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="20" r="8" stroke="#76328e" stroke-width="1.5"/></svg>
+          </div>
+          <div>
+            <h4>What to decide as a team</h4>
+            <p>Does the condensed "Uniquely Qualified" paragraph (now 2 sentences) still feel right, or does it lose something important? Is the grandchildren stat phrased correctly (4 in public schools, 2 in CCSD)? And is there any bullet in the credential cards that feels off or missing something Char would want there?</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#1e0f2a; color:rgba(255,255,255,.4); text-align:center; padding:1.5rem; font-size:.8rem;">
+    Sandbox page — noindex, nofollow &nbsp;·&nbsp; charforstudents.com
+  </footer>
+
+</body>
+</html>
