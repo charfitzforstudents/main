@@ -1,0 +1,8 @@
+# robots.txt — charforstudents.com
+# Char Fitzwater for CCSD School Board, District 1
+
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap
+Sitemap: https://charforstudents.com/sitemap.xml
