@@ -839,6 +839,33 @@ p:last-child { margin-bottom: 0; }
 /* --------------------------------------------------------------------------
    Responsive
    -------------------------------------------------------------------------- */
+@media (min-width: 861px) {
+  /* On desktop, let the photo fill the full hero height instead of
+     floating centered in a sea of purple */
+  .hero-inner {
+    align-items: stretch;
+    grid-template-columns: 1fr minmax(340px, 480px);
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-photo-wrap {
+    align-items: stretch;
+  }
+  .hero-photo-frame {
+    max-width: none;
+    height: 100%;
+    min-height: 460px;
+  }
+  .hero-photo-frame img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+}
+
 @media (max-width: 1024px) {
   .meet-grid { grid-template-columns: 300px 1fr; }
 }
