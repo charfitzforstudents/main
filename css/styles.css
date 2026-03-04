@@ -847,9 +847,9 @@ p:last-child { margin-bottom: 0; }
   /* Nav mobile */
   .hamburger { display: flex; }
   .nav-links {
-    /* Use absolute (not fixed) so backdrop-filter on #navbar doesn't
-       create a rogue fixed containing block. #navbar is already fixed,
-       so the dropdown inherits that positioning and sits right below it. */
+    /* Absolute (not fixed) — backdrop-filter on #navbar would contain
+       fixed children, so we stay absolute and inherit the navbar's own
+       fixed position. top:100% places the dropdown right below the bar. */
     position: absolute;
     top: 100%; left: 0; right: 0;
     z-index: 999;
@@ -857,11 +857,27 @@ p:last-child { margin-bottom: 0; }
     flex-direction: column; align-items: stretch;
     gap: 0; padding: .75rem 0 1.25rem;
     box-shadow: var(--shadow-md);
-    transform: translateY(-110%);
-    transition: transform .3s ease;
     border-top: 2px solid var(--purple-light);
+    /* Hide reliably — no percentage-based transforms that depend on
+       the element having a known height before first open */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: visibility 0s linear .25s,
+                opacity .25s ease,
+                transform .25s ease;
   }
-  .nav-links.is-open { transform: translateY(0); }
+  .nav-links.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    /* Visibility snaps visible instantly; opacity/transform animate in */
+    transition: visibility 0s linear,
+                opacity .25s ease,
+                transform .25s ease;
+  }
   .nav-links li a { display: block; padding: .7rem 1.5rem; border-bottom: 1px solid var(--light-gray); font-size: .95rem; }
   .nav-links li a::after { display: none; }
   .nav-donate-btn { margin: .65rem 1.5rem 0; text-align: center; display: block; }
