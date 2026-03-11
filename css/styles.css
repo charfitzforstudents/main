@@ -564,14 +564,22 @@ p:last-child { margin-bottom: 0; }
 .donate-card    { border-top: 4px solid var(--gold); }
 .volunteer-card { border-top: 4px solid var(--teal); }
 
-.fundhero-embed, .cc-form-embed {
-  background: var(--gold-light);
-  border: 1.5px dashed var(--gold);
+.fundhero-embed {
+  /* Live embed — no decorative border needed */
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.fundhero-embed iframe {
+  display: block;
+  width: 100%;
+}
+.cc-form-embed {
+  background: var(--teal-light);
+  border: 1.5px dashed var(--teal);
   border-radius: var(--radius-sm);
   padding: 1.5rem;
   text-align: center;
 }
-.cc-form-embed { background: var(--teal-light); border-color: var(--teal); }
 .embed-placeholder-note { font-size: .84rem; color: var(--text-muted); margin-bottom: 1rem; }
 .embed-placeholder-note code { background: rgba(0,0,0,.06); padding: .1rem .3rem; border-radius: 3px; }
 
