@@ -522,8 +522,32 @@ p:last-child { margin-bottom: 0; }
 .survey-text h3 { color: var(--purple); margin-bottom: .55rem; }
 .survey-text p  { margin-bottom: 1.2rem; color: var(--text-body); }
 .survey-note    { font-size: .82rem; color: var(--text-muted); margin-top: .4rem; font-style: italic; }
-.survey-graphic { width: 150px; }
-.survey-graphic svg { width: 100%; height: auto; }
+.survey-graphic { width: 180px; flex-shrink: 0; }
+.survey-graphic img {
+  width: 180px;
+  height: 240px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* Community event photo strip */
+.community-photo-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.community-photo img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: block;
+}
 
 .testimonials-heading {
   font-size: .82rem;
@@ -1009,6 +1033,9 @@ p:last-child { margin-bottom: 0; }
   .photo-secondary { flex: 1; }
   .photo-secondary img { max-height: 180px; }
 
+  /* Community photo strip */
+  .community-photo-strip { grid-template-columns: 1fr 1fr; }
+
   /* Donate grid */
   .donate-grid { grid-template-columns: 1fr; }
 
@@ -1030,6 +1057,7 @@ p:last-child { margin-bottom: 0; }
   .email-strip-form { width: 100%; }
   .footer-grid { grid-template-columns: 1fr; }
   .page-cta-strip { flex-direction: column; align-items: flex-start; }
+  .community-photo-strip { grid-template-columns: 1fr; }
 }
 
 /* --------------------------------------------------------------------------
