@@ -477,6 +477,14 @@ p:last-child { margin-bottom: 0; }
   font-weight: 900;
 }
 
+/* Bold label above credential cards */
+.cred-section-label {
+  color: var(--purple);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: -1.25rem; /* counteracts meet-bio flex gap to keep label snug above cards */
+}
+
 /* Skills CTA block */
 .skills-cta-block {
   background: var(--purple-light);
