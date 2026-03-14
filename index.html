@@ -565,39 +565,9 @@
             <h3>Volunteer &amp; Stay Connected</h3>
             <p>Knock on doors, make calls, host a coffee, put up a yard sign, or simply share
               Char's story with your neighbors. Drop your info below and we'll be in touch.</p>
-            <!--
-              CONSTANT CONTACT EMBED:
-              1. Log in to Constant Contact
-              2. Go to Sign-Up Forms and create or select your form
-              3. Click "Publish" → "Embed" and copy the code snippet
-              4. Replace everything inside this div with that snippet
-            -->
-            <div class="cc-form-embed" id="ccFormEmbed">
-              <p class="embed-placeholder-note"><em>Paste your Constant Contact sign-up form
-                embed code here. This will collect volunteer sign-ups directly into your CC
-                list.</em></p>
-              <!-- Temporary placeholder form for layout preview only -->
-              <form class="campaign-form placeholder-form" onsubmit="return false;">
-                <div class="form-row">
-                  <label for="volName">Name</label>
-                  <input type="text" id="volName" name="name" placeholder="Your full name">
-                </div>
-                <div class="form-row">
-                  <label for="volEmail">Email</label>
-                  <input type="email" id="volEmail" name="email" placeholder="you@email.com">
-                </div>
-                <div class="form-row">
-                  <label for="volPhone">Phone <span class="optional">(optional)</span></label>
-                  <input type="tel" id="volPhone" name="phone" placeholder="(843) 555-0000">
-                </div>
-                <div class="form-row">
-                  <label for="volHow">How would you like to help?</label>
-                  <textarea id="volHow" name="how" rows="3"
-                    placeholder="Yard sign, canvassing, hosting an event..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-teal btn-full">Count Me In</button>
-              </form>
-            </div>
+            <!-- Begin Constant Contact Inline Form Code -->
+            <div class="ctct-inline-form" data-form-id="b8880d91-f8b2-4b64-8063-1a989dbb7b1b"></div>
+            <!-- End Constant Contact Inline Form Code -->
           </div>
         </div>
 
@@ -609,20 +579,9 @@
           <h3>Stay in the Loop</h3>
           <p>Campaign news, event invitations, and board updates delivered to your inbox.</p>
         </div>
-        <!--
-          CONSTANT CONTACT EMAIL SIGNUP:
-          Replace the form below with your Constant Contact inline email signup embed code.
-        -->
-        <div class="cc-email-embed" id="ccEmailEmbed">
-          <form class="email-strip-form placeholder-form" onsubmit="return false;">
-            <input type="email" name="email" placeholder="Enter your email address"
-              aria-label="Email address">
-            <button type="submit" class="btn btn-gold">Sign Up</button>
-          </form>
-          <p class="embed-placeholder-note" style="margin-top:.5rem; font-size:.78rem; color:rgba(255,255,255,.5);">
-            Replace with Constant Contact email signup embed
-          </p>
-        </div>
+        <!-- Begin Constant Contact Inline Form Code -->
+        <div class="ctct-inline-form" data-form-id="b8880d91-f8b2-4b64-8063-1a989dbb7b1b"></div>
+        <!-- End Constant Contact Inline Form Code -->
       </div>
 
     </div>
@@ -679,5 +638,10 @@
   </footer>
 
   <script src="js/script.js?v=2" defer></script>
+
+  <!-- Begin Constant Contact Active Forms -->
+  <script> var _ctct_m = "013a87bb76de2969cc289cb73724334e"; </script>
+  <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+  <!-- End Constant Contact Active Forms -->
 </body>
 </html>
