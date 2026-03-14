@@ -677,10 +677,10 @@ p:last-child { margin-bottom: 0; }
   background: rgba(255,255,255,.1);
   border: 1px solid rgba(255,255,255,.2);
   border-radius: var(--radius-md);
-  padding: 1.75rem 2rem;
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
 }
 .email-strip-text h3 { color: var(--white); margin-bottom: .2rem; font-size: 1.1rem; }
