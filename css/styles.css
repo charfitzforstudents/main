@@ -1101,6 +1101,22 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* --------------------------------------------------------------------------
+   Constant Contact widget overrides
+   -------------------------------------------------------------------------- */
+/* Override CC's default green with campaign purple/teal */
+.ctct-form-defaults .ctct-form-button,
+.ctct-inline-form .ctct-form-button,
+.ctct-form-embed .ctct-form-button {
+  background-color: var(--teal) !important;
+  border-color: var(--teal) !important;
+}
+.ctct-form-defaults .ctct-form-button:hover,
+.ctct-inline-form .ctct-form-button:hover {
+  background-color: var(--purple) !important;
+  border-color: var(--purple) !important;
+}
+
+/* --------------------------------------------------------------------------
    A11y & Reduced motion
    -------------------------------------------------------------------------- */
 :focus-visible {
