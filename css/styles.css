@@ -678,9 +678,10 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-md);
   padding: 1rem 1.5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  text-align: center;
+  gap: 0.75rem;
 }
 .email-strip-text h3 { color: var(--white); margin-bottom: .2rem; font-size: 1.1rem; }
 .email-strip-text p  { color: rgba(255,255,255,.7); font-size: .93rem; }
@@ -1134,8 +1135,7 @@ p:last-child { margin-bottom: 0; }
 
 /* Email strip — constrain CC form, hide its built-in header/description */
 .email-strip .ctct-inline-form {
-  flex: 1;
-  min-width: 260px;
+  width: 100%;
   max-width: 420px;
 }
 .email-strip .ctct-form-defaults .ctct-form-header,
