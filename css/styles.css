@@ -610,6 +610,7 @@ p:last-child { margin-bottom: 0; }
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 1.75rem;
+  align-items: start;
 }
 .action-card {
   background: var(--white);
@@ -1103,7 +1104,7 @@ p:last-child { margin-bottom: 0; }
 /* --------------------------------------------------------------------------
    Constant Contact widget overrides
    -------------------------------------------------------------------------- */
-/* Override CC's default green with campaign purple/teal */
+/* Override CC's default green with campaign colors */
 .ctct-form-defaults .ctct-form-button,
 .ctct-inline-form .ctct-form-button,
 .ctct-form-embed .ctct-form-button {
@@ -1114,6 +1115,26 @@ p:last-child { margin-bottom: 0; }
 .ctct-inline-form .ctct-form-button:hover {
   background-color: var(--purple) !important;
   border-color: var(--purple) !important;
+}
+/* Remove CC's green background from form wrapper */
+.ctct-form-defaults,
+.ctct-form-wrapper,
+.ctct-inline-form > div {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Email strip — constrain CC form, hide its built-in header/description */
+.email-strip .ctct-inline-form {
+  flex: 1;
+  min-width: 260px;
+  max-width: 420px;
+}
+.email-strip .ctct-form-defaults .ctct-form-header,
+.email-strip .ctct-form-defaults .ctct-form-description,
+.email-strip .ctct-form-defaults h2,
+.email-strip .ctct-form-defaults p:not(.ctct-form-field) {
+  display: none !important;
 }
 
 /* --------------------------------------------------------------------------
