@@ -610,7 +610,6 @@ p:last-child { margin-bottom: 0; }
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 1.75rem;
-  align-items: start;
 }
 .action-card {
   background: var(--white);
@@ -1123,6 +1122,15 @@ p:last-child { margin-bottom: 0; }
   background-color: transparent !important;
   background: transparent !important;
 }
+
+/* Volunteer card — hide CC form's internal title/description (card already has them) */
+.volunteer-card .ctct-form-defaults h2,
+.volunteer-card .ctct-form-defaults .ctct-form-description,
+.volunteer-card .ctct-form-defaults p.ctct-form-text {
+  display: none !important;
+}
+/* Tighten gap between volunteer card intro text and the CC form */
+.volunteer-card > p { margin-bottom: 0.5rem !important; }
 
 /* Email strip — constrain CC form, hide its built-in header/description */
 .email-strip .ctct-inline-form {
