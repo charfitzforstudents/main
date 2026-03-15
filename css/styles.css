@@ -790,6 +790,12 @@ p:last-child { margin-bottom: 0; }
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.4rem;
 }
+.video-player {
+  width: 100%;
+  display: block;
+  background: #000;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
 .video-grid-page {
   /* On the dedicated advocacy page, cards have light backgrounds */
 }
