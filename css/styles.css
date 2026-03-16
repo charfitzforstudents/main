@@ -1102,9 +1102,23 @@ p:last-child { margin-bottom: 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .page-cta-strip { flex-direction: column; align-items: flex-start; }
   .community-photo-strip { grid-template-columns: 1fr; }
-  .advocacy-photo-strip { grid-template-columns: 1fr; }
-  .advocacy-photo img { height: 220px; }
+  .advocacy-photo-strip { display: none; }
   .video-grid-2col { grid-template-columns: 1fr; }
+
+  /* Cred cards — horizontal scroll on mobile */
+  .cred-grid {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: .5rem;
+    gap: .85rem;
+  }
+  .cred-card-compact {
+    min-width: 80vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
 }
 
 /* --------------------------------------------------------------------------
