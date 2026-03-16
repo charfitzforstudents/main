@@ -1071,6 +1071,7 @@ p:last-child { margin-bottom: 0; }
   .meet-photos { position: static; flex-direction: row; align-items: flex-start; }
   .photo-main { flex: 1.3; }
   .photo-secondary { flex: 1; }
+  .photo-main img { max-height: 220px; object-position: center 20%; }
   .photo-secondary img { max-height: 180px; }
 
   /* Community photo strip */
@@ -1095,6 +1096,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 600px) {
   .hero-pillars { gap: .5rem; }
   .meet-photos { flex-direction: column; }
+  .photo-main img { max-height: 220px; object-position: center 20%; }
   .photo-secondary img { max-height: 200px; }
   .skills-cta-block { flex-direction: column; align-items: flex-start; }
   .email-strip { flex-direction: column; align-items: flex-start; gap: .9rem; }
