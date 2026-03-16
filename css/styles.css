@@ -452,7 +452,8 @@ p:last-child { margin-bottom: 0; }
   border-left: 3px solid var(--lavender);
   transition: box-shadow var(--transition), transform var(--transition);
 }
-.cred-card-compact:hover { box-shadow: var(--shadow-md); transform: translateX(3px); }
+.cred-card-compact:hover,
+.cred-card-compact:active { box-shadow: var(--shadow-md); transform: translateX(3px); }
 .cred-icon-sm { width: 38px; }
 .cred-icon-sm svg { width: 38px; height: 38px; }
 .cred-card-compact h4 { color: var(--purple); margin-bottom: .45rem; font-size: 1rem; }
@@ -1104,21 +1105,6 @@ p:last-child { margin-bottom: 0; }
   .community-photo-strip { grid-template-columns: 1fr; }
   .advocacy-photo-strip { display: none; }
   .video-grid-2col { grid-template-columns: 1fr; }
-
-  /* Cred cards — horizontal scroll on mobile */
-  .cred-grid {
-    flex-direction: row;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: .5rem;
-    gap: .85rem;
-  }
-  .cred-card-compact {
-    min-width: 80vw;
-    scroll-snap-align: start;
-    flex-shrink: 0;
-  }
 }
 
 /* --------------------------------------------------------------------------
