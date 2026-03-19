@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Char Fitzwater | District 1 CCSD</title>
+  <meta name="description" content="Char Fitzwater, Ph.D. — running for District 1 of the Charleston County School District Board of Trustees. Students First. Good Governance Always.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="Assets/Char%20Fitzwater%20Logo%20Assets/For%20Digital/Icon%20Assets/Char%20Fitzwater-Icon-RGB.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:      #76328e;
+      --purple-dark: #55206e;
+      --lavender:    #bd9bcd;
+      --teal:        #00a0a2;
+      --teal-dark:   #007e80;
+      --gold:        #e99f00;
+      --gold-dark:   #c78600;
+      --white:       #ffffff;
+      --text-dark:   #1e0f2a;
+      --text-body:   #3d2e4a;
+      --text-muted:  #7a6888;
+    }
+
+    html, body {
+      min-height: 100%;
+      font-family: 'Golos Text', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--purple);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,160,162,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 20% 100%, rgba(233,159,0,.12) 0%, transparent 55%);
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+
+    /* ── Profile block ── */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-photo {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 3px solid rgba(255,255,255,.35);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+
+    .profile-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: .01em;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .profile-tagline {
+      font-size: .88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.72);
+      text-align: center;
+      line-height: 1.45;
+      max-width: 280px;
+    }
+
+    .profile-badge {
+      display: inline-block;
+      background: rgba(233,159,0,.18);
+      border: 1px solid rgba(233,159,0,.45);
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .25rem .75rem;
+      border-radius: 50px;
+    }
+
+    /* ── Link buttons ── */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      padding: 1rem 1.25rem;
+      border-radius: 14px;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: .97rem;
+      font-weight: 700;
+      line-height: 1.3;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0);
+      transition: background .2s ease;
+    }
+
+    .link-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    .link-btn:hover::before { background: rgba(255,255,255,.06); }
+    .link-btn:active { transform: translateY(0); }
+
+    /* Event button — featured */
+    .link-btn-event {
+      background: var(--gold);
+      color: var(--text-dark);
+    }
+    .link-btn-event:hover { background: var(--gold-dark); color: var(--white); }
+
+    /* Standard white-glass buttons */
+    .link-btn-glass {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      color: var(--white);
+    }
+    .link-btn-glass:hover { background: rgba(255,255,255,.2); }
+
+    /* Donate — teal accent */
+    .link-btn-donate {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .link-btn-donate:hover { background: var(--teal-dark); }
+
+    .btn-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.12);
+    }
+    .link-btn-event .btn-icon { background: rgba(0,0,0,.1); }
+    .btn-icon svg { width: 18px; height: 18px; }
+
+    .btn-text { flex: 1; }
+    .btn-label {
+      display: block;
+      font-size: .97rem;
+      font-weight: 700;
+    }
+    .btn-sublabel {
+      display: block;
+      font-size: .78rem;
+      font-weight: 500;
+      opacity: .72;
+      margin-top: .1rem;
+    }
+
+    .btn-arrow {
+      flex-shrink: 0;
+      opacity: .55;
+    }
+    .btn-arrow svg { width: 16px; height: 16px; }
+
+    /* ── Event badge on button ── */
+    .event-tag {
+      position: absolute;
+      top: -1px; right: 12px;
+      background: var(--purple);
+      color: var(--white);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .18rem .55rem;
+      border-radius: 0 0 6px 6px;
+    }
+
+    /* ── Divider ── */
+    .links-divider {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      width: 100%;
+      max-width: 400px;
+    }
+    .links-divider span {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      white-space: nowrap;
+    }
+    .links-divider::before, .links-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.15);
+    }
+
+    /* ── Footer ── */
+    .bio-footer {
+      margin-top: 2.25rem;
+      text-align: center;
+    }
+    .bio-footer p {
+      font-size: .72rem;
+      color: rgba(255,255,255,.3);
+      line-height: 1.5;
+    }
+    .bio-footer a { color: rgba(255,255,255,.45); }
+  </style>
+</head>
+<body>
+
+  <!-- Profile -->
+  <div class="profile">
+    <img class="profile-photo"
+      src="Assets/Char%20headshot.jpeg"
+      alt="Char Fitzwater, Ph.D.">
+    <div>
+      <p class="profile-name">Char Fitzwater, Ph.D.</p>
+    </div>
+    <span class="profile-badge">CCSD District 1 · Students First</span>
+    <p class="profile-tagline">Running for Charleston County School District Board of Trustees — Good governance, transparent leadership, kids first.</p>
+  </div>
+
+  <!-- Links -->
+  <div class="links">
+
+    <!-- Event — featured -->
+    <a href="https://lp.constantcontactpages.com/ev/reg/92df83j" class="link-btn link-btn-event" target="_blank" rel="noopener">
+      <span class="event-tag">New Event</span>
+      <span class="btn-icon">
+        <!-- Party / celebration icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        <span class="btn-label">Charcuterie with Char 🧀</span>
+        <span class="btn-sublabel">Sun, Mar 22 · 4:00 PM · Free · RSVP now</span>
+      </span>
+      <span class="btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+    </a>
+
+    <!-- Website -->
+    <a href="https://charforstudents.com" class="link-btn link-btn-glass" target="_blank" rel="noopener">
+      <span class="btn-icon">
+        <!-- Globe icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        <span class="btn-label">Visit Our Website</span>
+        <span class="btn-sublabel">charforstudents.com</span>
+      </span>
+      <span class="btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+    </a>
+
+    <!-- Divider -->
+    <div class="links-divider"><span>Support Char</span></div>
+
+    <!-- Donate -->
+    <a href="https://charforstudents.com/#donate" class="link-btn link-btn-donate" target="_blank" rel="noopener">
+      <span class="btn-icon">
+        <!-- Heart icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        <span class="btn-label">Donate to the Campaign</span>
+        <span class="btn-sublabel">Max $1,000 · Individuals only</span>
+      </span>
+      <span class="btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+    </a>
+
+    <!-- Volunteer -->
+    <a href="https://charforstudents.com/#volunteer" class="link-btn link-btn-glass" target="_blank" rel="noopener">
+      <span class="btn-icon">
+        <!-- Hand / volunteer icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </span>
+      <span class="btn-text">
+        <span class="btn-label">Get Involved</span>
+        <span class="btn-sublabel">Volunteer · Yard signs · Spread the word</span>
+      </span>
+      <span class="btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="bio-footer">
+    <p>Paid for by The Char for Students Campaign<br>
+    <a href="https://charforstudents.com">charforstudents.com</a></p>
+  </div>
+
+</body>
+</html>

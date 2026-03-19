@@ -1153,6 +1153,112 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* --------------------------------------------------------------------------
+   Event Popup
+   -------------------------------------------------------------------------- */
+.event-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(30, 15, 42, .6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.event-popup-overlay:not([hidden]) {
+  opacity: 1;
+}
+.event-popup-overlay[hidden] {
+  display: none;
+}
+
+.event-popup-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem 1.75rem;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: var(--shadow-lg), 0 0 0 4px rgba(233,159,0,.18);
+  border-top: 5px solid var(--gold);
+  transform: translateY(12px);
+  transition: transform .3s ease;
+}
+.event-popup-overlay:not([hidden]) .event-popup-card {
+  transform: translateY(0);
+}
+
+.event-popup-close {
+  position: absolute;
+  top: .9rem; right: .9rem;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--light-gray);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  transition: background var(--transition), color var(--transition);
+}
+.event-popup-close:hover { background: var(--lavender); color: var(--white); }
+.event-popup-close svg { width: 14px; height: 14px; }
+
+.event-popup-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: .4rem;
+}
+
+.event-popup-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 1.1rem;
+  line-height: 1.2;
+  padding-right: 2rem;
+}
+
+.event-popup-details {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  margin-bottom: 1.4rem;
+}
+
+.event-detail-row {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  font-size: .92rem;
+  color: var(--text-body);
+}
+.event-detail-row svg {
+  flex-shrink: 0;
+  width: 17px; height: 17px;
+  color: var(--purple);
+}
+
+.event-popup-cta {
+  display: block;
+  text-align: center;
+  margin-bottom: .85rem;
+}
+
+.event-popup-note {
+  font-size: .8rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
    A11y & Reduced motion
    -------------------------------------------------------------------------- */
 :focus-visible {

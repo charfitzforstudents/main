@@ -175,6 +175,44 @@
   }
 
   // -------------------------------------------------------------------------
+  // Event Popup
+  // -------------------------------------------------------------------------
+  const popup     = document.getElementById('eventPopup');
+  const popupClose = document.getElementById('eventPopupClose');
+
+  if (popup && popupClose) {
+    // Show after 2.5s if not dismissed this session
+    if (!sessionStorage.getItem('eventPopupDismissed')) {
+      setTimeout(() => {
+        popup.hidden = false;
+        // Small rAF delay lets the browser paint `display:flex` before
+        // the CSS opacity/transform transition kicks in
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => { popup.style.opacity = '1'; });
+        });
+      }, 2500);
+    }
+
+    const closePopup = () => {
+      popup.style.opacity = '0';
+      setTimeout(() => { popup.hidden = true; }, 300);
+      sessionStorage.setItem('eventPopupDismissed', '1');
+    };
+
+    popupClose.addEventListener('click', closePopup);
+
+    // Click outside card to close
+    popup.addEventListener('click', e => {
+      if (e.target === popup) closePopup();
+    });
+
+    // Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !popup.hidden) closePopup();
+    });
+  }
+
+  // -------------------------------------------------------------------------
   // Fade-in on scroll (lightweight intersection observer animation)
   // -------------------------------------------------------------------------
   if ('IntersectionObserver' in window) {
