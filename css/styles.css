@@ -1104,6 +1104,7 @@ p:last-child { margin-bottom: 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .page-cta-strip { flex-direction: column; align-items: flex-start; }
   .community-photo-strip { grid-template-columns: 1fr; }
+  .advocacy-cta-inner { flex-direction: column; align-items: flex-start; }
   .advocacy-photo-strip { display: none; }
   .video-grid-2col { grid-template-columns: 1fr; }
 }
@@ -1150,6 +1151,37 @@ p:last-child { margin-bottom: 0; }
 .email-strip .ctct-form-defaults h2,
 .email-strip .ctct-form-defaults p:not(.ctct-form-field) {
   display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Advocacy CTA Strip (home page, between Meet Char and Community Input)
+   -------------------------------------------------------------------------- */
+.advocacy-cta-strip {
+  background: var(--purple);
+  background-image: radial-gradient(ellipse 80% 120% at 100% 50%, rgba(0,160,162,.2) 0%, transparent 60%);
+  padding: 1.75rem 0;
+}
+.advocacy-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.advocacy-cta-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: .25rem;
+}
+.advocacy-cta-headline {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+  line-height: 1.4;
 }
 
 /* --------------------------------------------------------------------------
