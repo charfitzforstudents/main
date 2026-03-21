@@ -213,29 +213,38 @@
   }
 
   // -------------------------------------------------------------------------
-  // Fade-in on scroll (lightweight intersection observer animation)
+  // Fade-in on scroll — extended with stagger for sibling elements
+  // Only uses opacity + translateY: safe on all screen sizes, no layout impact
   // -------------------------------------------------------------------------
   if ('IntersectionObserver' in window) {
-    const fadeEls = document.querySelectorAll(
-      '.cred-card, .video-card, .testimonial-card, .endorsement-card, .accordion-item, .action-card'
-    );
+    const SELECTOR =
+      '.cred-card, .cred-card-compact, .stat-pill, .video-card, ' +
+      '.testimonial-card, .endorsement-card, .accordion-item, .action-card, ' +
+      '.bio-block, .survey-box';
 
-    // Apply initial state via inline style (avoids FOUC vs. CSS class approach)
+    const fadeEls = document.querySelectorAll(SELECTOR);
+
     fadeEls.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(18px)';
-      el.style.transition = 'opacity .5s ease, transform .5s ease';
+      // Work out stagger delay based on position among matching siblings
+      const siblings = Array.from(el.parentElement.children)
+        .filter(c => c.matches(SELECTOR));
+      const idx   = siblings.indexOf(el);
+      const delay = Math.min(idx * 80, 400); // cap at 400ms so last card isn't too slow
+
+      el.style.opacity    = '0';
+      el.style.transform  = 'translateY(18px)';
+      el.style.transition = `opacity .5s ease ${delay}ms, transform .5s ease ${delay}ms`;
     });
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
+          entry.target.style.opacity   = '1';
           entry.target.style.transform = 'none';
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
 
     fadeEls.forEach(el => io.observe(el));
   }
