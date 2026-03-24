@@ -135,13 +135,6 @@
     .link-btn:hover::before { background: rgba(255,255,255,.06); }
     .link-btn:active { transform: translateY(0); }
 
-    /* Event button — featured */
-    .link-btn-event {
-      background: var(--gold);
-      color: var(--text-dark);
-    }
-    .link-btn-event:hover { background: var(--gold-dark); color: var(--white); }
-
     /* Standard white-glass buttons */
     .link-btn-glass {
       background: rgba(255,255,255,.12);
@@ -167,7 +160,6 @@
       justify-content: center;
       background: rgba(0,0,0,.12);
     }
-    .link-btn-event .btn-icon { background: rgba(0,0,0,.1); }
     .btn-icon svg { width: 18px; height: 18px; }
 
     .btn-text { flex: 1; }
@@ -189,20 +181,6 @@
       opacity: .55;
     }
     .btn-arrow svg { width: 16px; height: 16px; }
-
-    /* ── Event badge on button ── */
-    .event-tag {
-      position: absolute;
-      top: -1px; right: 12px;
-      background: var(--purple);
-      color: var(--white);
-      font-size: .65rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: .18rem .55rem;
-      border-radius: 0 0 6px 6px;
-    }
 
     /* ── Divider ── */
     .links-divider {
@@ -257,19 +235,20 @@
   <!-- Links -->
   <div class="links">
 
-    <!-- Event — featured -->
-    <a href="https://lp.constantcontactpages.com/ev/reg/92df83j" class="link-btn link-btn-event" target="_blank" rel="noopener">
-      <span class="event-tag">New Event</span>
+    <!-- Survey -->
+    <a href="https://forms.gle/HvtPyQ5ons1ec98PA" class="link-btn link-btn-glass" target="_blank" rel="noopener">
       <span class="btn-icon">
-        <!-- Party / celebration icon -->
+        <!-- Clipboard / survey icon -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-          <polyline points="22 4 12 14.01 9 11.01"/>
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+          <line x1="9" y1="12" x2="15" y2="12"/>
+          <line x1="9" y1="16" x2="13" y2="16"/>
         </svg>
       </span>
       <span class="btn-text">
-        <span class="btn-label">Charcuterie with Char 🧀</span>
-        <span class="btn-sublabel">Sun, Mar 22 · 4:00 PM · Free · RSVP now</span>
+        <span class="btn-label">Share Your Voice</span>
+        <span class="btn-sublabel">Tell Char what matters most for our schools</span>
       </span>
       <span class="btn-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
     </a>
