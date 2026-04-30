@@ -174,24 +174,6 @@
     });
   }
 
-    const closePopup = () => {
-      popup.style.opacity = '0';
-      setTimeout(() => { popup.hidden = true; }, 300);
-    };
-
-    popupClose.addEventListener('click', closePopup);
-
-    // Click outside card to close
-    popup.addEventListener('click', e => {
-      if (e.target === popup) closePopup();
-    });
-
-    // Escape key
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !popup.hidden) closePopup();
-    });
-  }
-
   // -------------------------------------------------------------------------
   // Fade-in on scroll — extended with stagger for sibling elements
   // Only uses opacity + translateY: safe on all screen sizes, no layout impact
