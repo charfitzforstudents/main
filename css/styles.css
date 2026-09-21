@@ -761,6 +761,28 @@ p:last-child { margin-bottom: 0; }
 }
 .accordion-panel p + p { margin-top: .7rem; }
 .accordion-panel[hidden] { display: none; }
+.accordion-panel blockquote {
+  margin: 1rem 0 0;
+  padding: .1rem 0 .1rem 1rem;
+  border-left: 3px solid var(--purple);
+}
+.accordion-panel blockquote p { font-style: italic; }
+.accordion-panel blockquote cite {
+  display: block;
+  margin-top: .35rem;
+  font-size: .9rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--purple);
+}
+.accordion-panel .acc-figure { margin: 1.25rem 0 0; }
+.accordion-panel .acc-figure img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: var(--radius-md);
+}
 
 /* --------------------------------------------------------------------------
    Page Header (inner pages)
